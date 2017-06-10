@@ -126,13 +126,17 @@ Full example:
 \apptocmd{\thebibliography}{\raggedright}{}{}
 
 % How to avoid overfull error with url package?
+% https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
+%
 % See also the `\usepackage{url}` declarationon the file `basic.tex`.
 % Set this to 2mu or 3mu if URL start troubling again.
-% https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
 \Urlmuskip=0mu plus 1mu
 
 % Automatically put a `\medskip` spacing between paragraphs
-% https://tex.stackexchange.com/questions/365976/how-to-stop-the-package-usepackageparskip-disabling-the-paragraph-indentation
+% 
+% How to stop the package \usepackage{parskip} disabling the paragraph indentation?
+% https://tex.stackexchange.com/questions/365976/
+% 
 % \edef\restoreparindent{\parindent=\the\parindent\relax}
 % \usepackage{parskip}
 % \restoreparindent
@@ -141,7 +145,7 @@ Full example:
 %\setlength\parindent{0pt}
 %
 % How to restore the parskip skips between list items?
-% https://tex.stackexchange.com/questions/366848/how-to-restore-the-parskip-skips-between-list-items
+% https://tex.stackexchange.com/questions/366848/
 \parskip=0.5\baselineskip \advance\parskip by 0pt plus 2pt
 ```
 
@@ -189,8 +193,8 @@ Full example:
 
 \begin{document}
 
-% pdfTeX warning (ext4): destination with the same identifier (nam e{page.1}) has been already used, duplicate ignored
-% https://tex.stackexchange.com/questions/18924/pdftex-warning-ext4-destination-with-the-same-identifier-nam-epage-1-has
+% pdfTeX warning (ext4): destination with the same identifier (nam e{page.1}) has been already used
+% https://tex.stackexchange.com/questions/18924/
 \hypersetup{pageanchor=false}
 
 % Author name
