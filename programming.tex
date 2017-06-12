@@ -10,12 +10,17 @@
 % https://tex.stackexchange.com/questions/30512/how-to-insert-code-with-accents-with-listings
 \usepackage{listingsutf8}
 
+% set the font family for lstlisting
+% https://tex.stackexchange.com/questions/33685/set-the-font-family-for-lstlisting
+\usepackage{courier}
+
+% Latex: Listings with monospace fonts
+% https://stackoverflow.com/questions/2913141/latex-listings-with-monospace-fonts
 \lstset{frame=,
   language=Java,
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
-  columns=flexible,
   basicstyle={\small\ttfamily},
   numbers=left,
   numberstyle=\color{gray},
@@ -43,7 +48,6 @@
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
-  columns=flexible,
   numbers=left,
   numberstyle=\color{gray},
   breaklines=true,
