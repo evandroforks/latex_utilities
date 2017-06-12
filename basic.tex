@@ -6,12 +6,13 @@
 % https://tex.stackexchange.com/questions/150369/incompatible-color-definition-when-using-tikz-with-color-package
 \usepackage{xcolor}
 
+% RGB colors in percentage notation by using `rgb` tag
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
+% RGB colors in absolute values from 0 to 255 by using `RGB` tag
 \definecolor{link_color}{RGB}{26,13,178}
-
 
 % For web links and paths with \path{..} and \url{https://www.python.org/downloads/}
 %
@@ -19,6 +20,24 @@
 % ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/doc/options.pdf
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[backref,colorlinks,linkcolor=link_color,citecolor=dkgreen]{hyperref}
+
+% pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+% https://tex.stackexchange.com/questions/124520/pdftex-warning-ext4-destination-with-the-same-identifier-namefigure-1-has
+\usepackage{aliascnt,ccaption}
+
+% Fix `destination with the same identifier (name{figure.1}) has been already used, duplicate ignored`,
+% when using \caption{title} inside a figure.
+%
+% New alias counter for figure float
+% http://ctan.org/pkg/{aliascnt,ccaption}
+\newaliascnt{figurealt}{figure}
+\aliascntresetthe{figurealt}
+\makeatletter
+\renewcommand{\contcaption}{%
+  \expandafter\addtocounter\expandafter{\@captype alt}{\m@ne}% Step alias cntr back
+  \expandafter\refstepcounter\expandafter{\@captype alt}% Make reference
+  \@contcaption\@captype}
+\makeatother
 
 % How to fix URL overfull & underfull on emumeration?
 % % https://tex.stackexchange.com/questions/366803/how-to-fix-url-overfull-underfull-on-emumeration
