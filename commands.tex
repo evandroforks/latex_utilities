@@ -183,6 +183,11 @@ breakable,
 % Create a bold title all in upper case.
 \newcommand{\Title}[1]{\textbf{\MakeUppercase{#1}}}
 
+% \nameref — How to display section name AND its number
+% https://tex.stackexchange.com/questions/121865/nameref-how-to-display-section-name-and-its-number
+%
+% Usage \fullref{fig:envinronmentHead} or \fullref{sec:some_sec}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}} % One single link
 
 
 
