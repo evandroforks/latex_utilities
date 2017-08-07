@@ -36,7 +36,14 @@
 % https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
 % ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/doc/options.pdf
 \PassOptionsToPackage{hyphens}{url}
-\usepackage[backref,colorlinks,linkcolor=link_color,citecolor=dkgreen]{hyperref}
+
+% ifpackageloaded question
+% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
+\makeatletter
+\@ifpackageloaded{hyperref}
+  {}
+  {\usepackage{hyperref}}
+\makeatother
 
 % pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 % https://tex.stackexchange.com/questions/124520/pdftex-warning-ext4-destination-with-the-same-identifier-namefigure-1-has
@@ -102,11 +109,21 @@
 
 % Use its macro adjustwidth* to extend tables out of outer text border.
 % https://tex.stackexchange.com/questions/366155/how-to-write-a-table-a-little-larger-than-the-paragraphs-with-centered-columns
-\usepackage[strict]{changepage}
+\PassOptionsToPackage{strict}{changepage}
+\makeatletter
+\@ifpackageloaded{changepage}
+  {}
+  {\usepackage{changepage}}
+\makeatother
 
 % No spacing between enumerated items with \usepackage{enumerate}
 % https://tex.stackexchange.com/questions/119919/no-spacing-between-enumerated-items-with-usepackageenumerate
-\usepackage[shortlabels]{enumitem}
+\PassOptionsToPackage{shortlabels}{enumitem}
+\makeatletter
+\@ifpackageloaded{enumitem}
+  {}
+  {\usepackage{enumitem}}
+\makeatother
 
 \usepackage{tabularx}
 \usepackage{multirow}
