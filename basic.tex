@@ -37,6 +37,10 @@
 % ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/doc/options.pdf
 \PassOptionsToPackage{hyphens}{url}
 
+% Applying options to already loaded package
+% https://tex.stackexchange.com/questions/124049/applying-options-to-already-loaded-package
+\PassOptionsToPackage{backref,colorlinks,linkcolor=link_color,citecolor=dkgreen}{hyperref}
+
 % ifpackageloaded question
 % https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \makeatletter
