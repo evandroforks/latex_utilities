@@ -21,6 +21,7 @@
 
 % Incompatible color definition when using tikz with color package
 % https://tex.stackexchange.com/questions/150369/incompatible-color-definition-when-using-tikz-with-color-package
+\makeatletter
 \usepackage{xcolor}
 
 % RGB colors in percentage notation by using `rgb` tag
@@ -31,23 +32,10 @@
 % RGB colors in absolute values from 0 to 255 by using `RGB` tag
 \definecolor{link_color}{RGB}{26,13,178}
 
-% For web links and paths with \path{..} and \url{https://www.python.org/downloads/}
-%
-% https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
-% ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/doc/options.pdf
-\PassOptionsToPackage{hyphens}{url}
+\@ifpackageloaded{changepage}
+    {}
+    {\usepackage[backref,colorlinks,linkcolor=link_color,citecolor=dkgreen]{hyperref}}
 
-% Applying options to already loaded package
-% https://tex.stackexchange.com/questions/124049/applying-options-to-already-loaded-package
-\PassOptionsToPackage{backref,colorlinks,linkcolor=link_color,citecolor=dkgreen}{hyperref}
-
-% ifpackageloaded question
-% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
-\makeatletter
-\@ifpackageloaded{hyperref}
-  {}
-  {\usepackage{hyperref}}
-\makeatother
 
 % pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 % https://tex.stackexchange.com/questions/124520/pdftex-warning-ext4-destination-with-the-same-identifier-namefigure-1-has
@@ -57,15 +45,14 @@
 % when using \caption{title} inside a figure.
 %
 % New alias counter for figure float
-% http://ctan.org/pkg/{aliascnt,ccaption}
+% http://ctan.org/pkg/aliascnt
+% http://ctan.org/pkg/ccaption
 \newaliascnt{figurealt}{figure}
 \aliascntresetthe{figurealt}
-\makeatletter
 \renewcommand{\contcaption}{%
-  \expandafter\addtocounter\expandafter{\@captype alt}{\m@ne}% Step alias cntr back
-  \expandafter\refstepcounter\expandafter{\@captype alt}% Make reference
-  \@contcaption\@captype}
-\makeatother
+    \expandafter\addtocounter\expandafter{\@captype alt}{\m@ne}% Step alias cntr back
+    \expandafter\refstepcounter\expandafter{\@captype alt}% Make reference
+    \@contcaption\@captype}
 
 % \lettrine{O}{nce} upon a time...
 % \lettrine[findent=2pt]{\fbox{\textbf{T}}}{ }his thesis deals with...
@@ -89,21 +76,28 @@
 
 % Use its macro adjustwidth* to extend tables out of outer text border.
 % https://tex.stackexchange.com/questions/366155/how-to-write-a-table-a-little-larger-than-the-paragraphs-with-centered-columns
-\PassOptionsToPackage{strict}{changepage}
-\makeatletter
+%
+% The `memoir` class emulates this package, so not try to load it when using `memoir`: ifpackageloaded question
+% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \@ifpackageloaded{changepage}
-  {}
-  {\usepackage{changepage}}
-\makeatother
+    {}
+    {\usepackage[strict]{changepage}}
 
+% With the package option shortlabels you can use an enumerate-like syntax, where A, a, I, i and 1
+% stand for \Alph*, \alph*, \Roman*, \roman* and \arabic*. This is intended mainly as a sort of
+% compatibility mode with the enumerate package, and therefore the following special rule applies:
+% if the very first option (at any level) is not recognized as a valid key, then it will be
+% considered a label with the enumerate-like syntax.
+%
 % No spacing between enumerated items with \usepackage{enumerate}
 % https://tex.stackexchange.com/questions/119919/no-spacing-between-enumerated-items-with-usepackageenumerate
-\PassOptionsToPackage{shortlabels}{enumitem}
-\makeatletter
-\@ifpackageloaded{enumitem}
-  {}
-  {\usepackage{enumitem}}
-\makeatother
+\@ifpackageloaded{changepage}
+    {}
+    {\usepackage[shortlabels]{enumitem}}
+
+\@ifpackageloaded{changepage}
+    {}
+    {\usepackage[hyphens]{url}}
 
 \usepackage{tabularx}
 \usepackage{multirow}
@@ -190,5 +184,6 @@
 \usepackage{longtable}
 \usepackage{ragged2e}
 \usepackage{tocloft}
+\makeatother
 
 
