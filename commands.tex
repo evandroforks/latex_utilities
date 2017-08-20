@@ -207,5 +207,23 @@ breakable,
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}} % One single link
 
 
+% Setting Entries of List of Listings in LaTeX. Package Listings
+% http://tex.stackexchange.com/questions/228936/setting-entries-of-list-of-listings-in-latex-package-listings
+\newlength\mylen
+
+\begingroup
+\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+\globaldefs\@ne \let\c@loldepth\@ne
+\newlistof{listings}{lol}{\lstlistlistingname}
+\newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
+\newlistentry{lstlisting}{lol}{0}
+\makeatother
+\endgroup
+
+\renewcommand\cftlstlistingpresnum{\lstlistingname~}
+\settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}
+\addtolength\cftlstlistingnumwidth{\mylen} %
+\renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}
 
 
