@@ -3,17 +3,33 @@
 
 \makeatletter
 
-\@ifundefined{currenttime}{ \def\currenttime{Current Time} }{}
-\@ifundefined{lstlistingname}{ \def\lstlistingname{LST Listing Name} }{}
-\@ifundefined{lstlistoflistings}{ \def\lstlistoflistings{LST List of Listing} }{}
+\@ifundefined{hline}{       \def\hline{hline} }{}
+\@ifundefined{caption}{     \def\caption{caption} }{}
+\@ifundefined{RaggedRight}{ \def\RaggedRight{RaggedRight} }{}
+
+\@ifundefined{currenttime}{         \def\currenttime{Current Time} }{}
+\@ifundefined{lstlistingname}{      \def\lstlistingname{LST Listing Name} }{}
+\@ifundefined{lstlistoflistings}{   \def\lstlistoflistings{LST List of Listing} }{}
+\@ifundefined{mathfrak}{            \def\mathfrak{mathfrak} }{}
+\@ifundefined{resizebox}{           \def\resizebox{resizebox} }{}
+\@ifundefined{legend}{              \def\legend{legend} }{}
+\@ifundefined{url}{                 \def\url{url} }{}
+\@ifundefined{gamma_x}{             \def\gamma_x{gamma_x} }{}
+\@ifundefined{boldsymbol}{          \def\boldsymbol{boldsymbol} }{}
+\@ifundefined{texorpdfstring}{      \def\texorpdfstring{texorpdfstring} }{}
+\@ifundefined{ABNTEXfontereduzida}{ \def\ABNTEXfontereduzida{ABNTEXfontereduzida} }{}
+\@ifundefined{citeonline}{          \def\citeonline{citeonline} }{}
 
 % How to replace a command with a dummy one?
 % https://tex.stackexchange.com/questions/387394/how-to-replace-a-command-with-a-dummy-one
 \@ifundefined{includegraphics}{ \newcommand{\includegraphics}[2][]{ includegraphics \detokenize{#1} \detokenize{#2} } }{}
+\@ifundefined{resizebox}{       \newcommand{\resizebox}[3][]{ resizebox \detokenize{#1} \detokenize{#2} \detokenize{#3} } }{}
+\@ifundefined{SI}{              \newcommand{\SI}[3][]{ SI \detokenize{#1} \detokenize{#2} \detokenize{#3} } }{}
 
-\@ifundefined{hline}{ \def\hline{hline} }{}
-\@ifundefined{caption}{ \def\caption{caption} }{}
-\@ifundefined{RaggedRight}{ \def\RaggedRight{RaggedRight} }{}
+\@ifundefined{includepdf}
+{
+    \renewcommand{\modifiedincludepdf}[4][]{ modifiedincludepdf \detokenize{#1} \detokenize{#2} \detokenize{#3} \detokenize{#4} }
+}{}
 
 % How to create a dummy generic environment replacement?
 % https://tex.stackexchange.com/questions/387389/how-to-create-a-dummy-generic-environment-replacement
@@ -21,6 +37,27 @@
 {
     \newenvironment{longtable}[0]
     {longtable environment\par\verbatim\tiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{sideways}
+{
+    \newenvironment{sideways}[0]
+    {sideways environment\par\verbatim\tiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{landscape}
+{
+    \newenvironment{landscape}[0]
+    {landscape environment\par\verbatim\tiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{lstlisting}
+{
+    \newenvironment{lstlisting}[0]
+    {lstlisting environment\par\verbatim\tiny}
     {\normalfont\endverbatim\endgraf replacement for debug mode}
 }{}
 
