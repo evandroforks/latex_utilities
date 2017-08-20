@@ -134,4 +134,12 @@
 
 
 
+% The package supports the Text Companion fonts, which provide many text symbols (such as
+% baht, bullet, copyright, musicalnote, onequarter, section, and yen), in the TS1 encoding.
+%
+% `LaTeX Error: Option clash for package textcomp` with the package `mathcomp`, it need to be loaded before it.
+% https://tex.stackexchange.com/questions/343546/how-do-you-resolve-the-error-in-latex-option-clash-for-package-inputenc-usepa
+\usepackage[full]{textcomp}
+\usepackage{mathcomp}
+
 
