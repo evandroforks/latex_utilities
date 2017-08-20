@@ -1,0 +1,27 @@
+
+
+
+\makeatletter
+
+\@ifundefined{currenttime}{ \def\currenttime{Current Time} }{}
+\@ifundefined{lstlistingname}{ \def\lstlistingname{LST Listing Name} }{}
+\@ifundefined{lstlistoflistings}{ \def\lstlistoflistings{LST List of Listing} }{}
+
+% How to replace a command with a dummy one?
+% https://tex.stackexchange.com/questions/387394/how-to-replace-a-command-with-a-dummy-one
+\@ifundefined{includegraphics}{ \newcommand{\includegraphics}[2][]{ includegraphics \detokenize{#1} \detokenize{#2} } }{}
+
+\@ifundefined{hline}{ \def\hline{hline} }{}
+\@ifundefined{caption}{ \def\caption{caption} }{}
+\@ifundefined{RaggedRight}{ \def\RaggedRight{RaggedRight} }{}
+
+% How to create a dummy generic environment replacement?
+% https://tex.stackexchange.com/questions/387389/how-to-create-a-dummy-generic-environment-replacement
+\@ifundefined{longtable}
+{
+    \newenvironment{longtable}[0]
+    {longtable environment\par\verbatim\tiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\makeatother
