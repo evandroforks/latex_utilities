@@ -20,6 +20,11 @@
 \@ifundefined{ABNTEXfontereduzida}{ \def\ABNTEXfontereduzida{ABNTEXfontereduzida} }{}
 \@ifundefined{citeonline}{          \def\citeonline{citeonline} }{}
 
+% How to rename an existing command?
+% https://tex.stackexchange.com/questions/193379/how-to-rename-an-existing-command
+\newcommand{\supertiny}{\fontsize{2pt}{2.5pt}\selectfont}
+\usepackage{lmodern}
+
 % How to replace a command with a dummy one?
 % https://tex.stackexchange.com/questions/387394/how-to-replace-a-command-with-a-dummy-one
 \@ifundefined{includegraphics}
@@ -61,28 +66,28 @@
 \@ifundefined{longtable}
 {
     \newenvironment{longtable}[0]
-    {longtable environment\par\verbatim\tiny}
+    {longtable environment\par\verbatim\supertiny}
     {\normalfont\endverbatim\endgraf replacement for debug mode}
 }{}
 
 \@ifundefined{sideways}
 {
     \newenvironment{sideways}[0]
-    {sideways environment\par\verbatim\tiny}
+    {sideways environment\par\verbatim\supertiny}
     {\normalfont\endverbatim\endgraf replacement for debug mode}
 }{}
 
 \@ifundefined{landscape}
 {
     \newenvironment{landscape}[0]
-    {landscape environment\par\verbatim\tiny}
+    {landscape environment\par\verbatim\supertiny}
     {\normalfont\endverbatim\endgraf replacement for debug mode}
 }{}
 
 \@ifundefined{lstlisting}
 {
     \newenvironment{lstlisting}[0]
-    {lstlisting environment\par\verbatim\tiny}
+    {lstlisting environment\par\verbatim\supertiny}
     {\normalfont\endverbatim\endgraf replacement for debug mode}
 }{}
 
