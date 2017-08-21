@@ -16,12 +16,12 @@
 %
 % This work consists of the files `README.md`, `basic.tex`,
 % `commands.tex` and `programming.tex`.
+\makeatletter
 
 
 
 % Incompatible color definition when using tikz with color package
 % https://tex.stackexchange.com/questions/150369/incompatible-color-definition-when-using-tikz-with-color-package
-\makeatletter
 \usepackage{xcolor}
 
 % RGB colors in absolute values from 0 to 255 by using `RGB` tag
@@ -184,6 +184,13 @@
 \usepackage{longtable}
 \usepackage{ragged2e}
 \usepackage{tocloft}
+
+% LaTeX not hyphenating properly, text running off page
+% https://tex.stackexchange.com/questions/28136/latex-not-hyphenating-properly-text-running-off-page
+\usepackage{hyphenat}
+
+
+
 \makeatother
 
 
