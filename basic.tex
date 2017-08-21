@@ -24,17 +24,17 @@
 \makeatletter
 \usepackage{xcolor}
 
+% RGB colors in absolute values from 0 to 255 by using `RGB` tag
+\definecolor{darkblue}{RGB}{26,13,178}
+
 % RGB colors in percentage notation by using `rgb` tag
-\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-% RGB colors in absolute values from 0 to 255 by using `RGB` tag
-\definecolor{link_color}{RGB}{26,13,178}
-
 \@ifpackageloaded{changepage}
     {}
-    {\usepackage[backref,colorlinks,linkcolor=link_color,citecolor=dkgreen]{hyperref}}
+    {\usepackage[backref,colorlinks,linkcolor=darkblue,citecolor=darkgreen]{hyperref}}
 
 
 % pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
