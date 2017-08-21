@@ -22,14 +22,39 @@
 
 % How to replace a command with a dummy one?
 % https://tex.stackexchange.com/questions/387394/how-to-replace-a-command-with-a-dummy-one
-\@ifundefined{includegraphics}{ \newcommand{\includegraphics}[2][]{ includegraphics \detokenize{#1} \detokenize{#2} } }{}
-\@ifundefined{resizebox}{       \newcommand{\resizebox}[3][]{ resizebox \detokenize{#1} \detokenize{#2} \detokenize{#3} } }{}
-\@ifundefined{SI}{              \newcommand{\SI}[3][]{ SI \detokenize{#1} \detokenize{#2} \detokenize{#3} } }{}
+\@ifundefined{includegraphics}
+{
+    \newcommand{\includegraphics}[3][]{ \detokenize{ \includegraphics[#1]{#2 #3} } }
+}{}
+
+\@ifundefined{resizebox}
+{
+    \newcommand{\resizebox}[3][]{ resizebox }
+}{}
+
+\@ifundefined{SI}
+{
+    \newcommand{\SI}[3][]{ SI }
+}{}
 
 \@ifundefined{includepdf}
 {
-    \renewcommand{\modifiedincludepdf}[4][]{ modifiedincludepdf \detokenize{#1} \detokenize{#2} \detokenize{#3} \detokenize{#4} }
+    \newcommand{\includepdf}[3][]{ SI }
 }{}
+
+\@ifundefined{modifiedincludepdf}
+{
+    \newcommand{\modifiedincludepdf}[4][]
+    {
+        modifiedincludepdf
+    }
+}
+{
+    \renewcommand{\modifiedincludepdf}[4][]
+    {
+        modifiedincludepdf
+    }
+}
 
 % How to create a dummy generic environment replacement?
 % https://tex.stackexchange.com/questions/387389/how-to-create-a-dummy-generic-environment-replacement
