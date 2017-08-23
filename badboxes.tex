@@ -1,0 +1,69 @@
+
+
+% Bad Boxes settings
+
+% Underfull \hbox in bibliography
+% https://tex.stackexchange.com/questions/10924/underfull-hbox-in-bibliography
+\apptocmd{\thebibliography}{\raggedright}{}{}
+
+% Underfull \hbox (badness 10000) has occurred while \output is active
+% https://tex.stackexchange.com/questions/367369/underfull-hbox-badness-10000-has-occurred-while-output-is-active
+%
+% how to suppress “Underfull \vbox (badness 10000) … while \output is active”?
+% https://tex.stackexchange.com/questions/62296/how-to-suppress-underfull-vbox-badness-10000-while-output-is-active
+\makeatletter
+    \def\@textbottom{\vskip \z@ \@plus 7pt}
+    \let\@texttop\relax
+\makeatother
+
+% Why Latex is hyphenating some words automatically, but others dont? hyphenmins{22} %left=2, right=2
+% https://tex.stackexchange.com/questions/387076/why-latex-is-hyphenating-some-words-automatically-but-others-dont
+\makeatletter
+    \@ifpackagewith{babel}{brazil}{  \renewcommand\brazilhyphenmins{11} }{}
+    \@ifpackagewith{babel}{english}{ \renewcommand\englishhyphenmins{11} }{}
+    \@ifpackagewith{babel}{french}{  \renewcommand\frenchhyphenmins{11} }{}
+\makeatother
+
+\makeatletter
+\@ifpackageloaded{url}
+{
+    % Bad formatting using URLs in bibtex
+    % https://tex.stackexchange.com/questions/22888/bad-formatting-using-urls-in-bibtex
+    \usepackage{etoolbox}
+
+    % How to avoid overfull error with url package?
+    % See also the `\usepackage{url}` declarationon the file `basic.tex`.
+    % Set this to 2mu or 3mu if URL start troubling again.
+    % https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
+    \Urlmuskip=0mu plus 1mu
+
+    % How to fix URL overfull & underfull on emumeration?
+    % https://tex.stackexchange.com/questions/366803/how-to-fix-url-overfull-underfull-on-emumeration
+    %
+    % Forcing linebreaks in \url
+    % https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url/10401
+    \makeatletter
+        \g@addto@macro{\UrlBreaks}{\UrlOrds}
+    \makeatother
+
+    % How to fix this url bad box for stackoverflow link?
+    % https://tex.stackexchange.com/questions/384427/how-to-fix-this-url-bad-box-for-stackoverflow-link
+    \makeatletter
+    \g@addto@macro{\UrlBreaks}
+    {%
+        \do\/\do\a\do\b\do\c\do\d\do\e\do\f%
+        \do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+        \do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+        \do\u\do\v\do\w\do\x\do\y\do\z%
+        \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
+        \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+        \do\O\do\P\do\Q\do\R\do\S\do\T\do\U%
+        \do\V\do\W\do\X\do\Y\do\Z
+    }
+    \makeatother
+}{}
+\makeatother
+
+
+
+
