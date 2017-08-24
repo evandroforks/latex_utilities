@@ -213,17 +213,24 @@ breakable,
 
 \begingroup
 \makeatletter
-\let\newcounter\@gobble\let\setcounter\@gobbletwo
-\globaldefs\@ne \let\c@loldepth\@ne
-\newlistof{listings}{lol}{\lstlistlistingname}
-\newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
-\newlistentry{lstlisting}{lol}{0}
+    \let\newcounter\@gobble\let\setcounter\@gobbletwo
+    \globaldefs\@ne \let\c@loldepth\@ne
+    \newlistof{listings}{lol}{\lstlistlistingname}
+    \newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
+    \newlistentry{lstlisting}{lol}{0}
 \makeatother
 \endgroup
 
-\renewcommand\cftlstlistingpresnum{\lstlistingname~}
-\settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}
-\addtolength\cftlstlistingnumwidth{\mylen} %
-\renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}
+% Calculate the size of the header
+\newcommand{\calculatelisteningsheader}
+{
+    \renewcommand\cftlstlistingpresnum{\lstlistingname~}
+    \settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}
+    \addtolength\cftlstlistingnumwidth{\mylen} %
+    \renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}
+}
+
+% Ensure it is called at least one time
+\calculatelisteningsheader
 
 
