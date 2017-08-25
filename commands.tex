@@ -67,11 +67,10 @@
 {\par}
 
 
+% Some text \brkurl{http://www.example.com/this/directory/here}
+%
 % How to break long URLs using common hyphenation but adding a line feed indicator?
-%
-% some text \brkurl{http://www.example.com/this/directory/here}
-%
-% https://tex.stackexchange.com/questions/69824/how-to-break-long-urls-using-common-hyphenation-but-adding-a-line-feed-indicator
+% https://tex.stackexchange.com/questions/69824/how-to-break-long-urls-using-common-hyphenation-but
 \def\addurlspace#1
 {
     \ifx\relax#1%
@@ -171,10 +170,6 @@
 
 
 % How to automatically put a [Go To Summary] | [Go Back] on each section?
-%
-% Use \addGoToSummary to turn it on, and
-% \removeGoToSummary to turn off the `[Go To Top]` label.
-%
 % https://tex.stackexchange.com/questions/367859/how-to-automatically-put-a-go-to-summary-go-back-on-each-section
 \definecolor{ultramarine}{RGB}{0,32,96}
 
@@ -187,7 +182,7 @@
 }
 
 % How can the go to summary be fixed so the \section[Some]{Some more} does not throw all these errors?
-% https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more-does-not-thr
+% https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more
 \makeatletter
     \newcommand{\addGoToSummary}{\renewcommand{\Sectionformat}[2]{##1 \protect\goToSummaryText}}
     \newcommand{\removeGoToSummary}{\renewcommand{\Sectionformat}[2]{##1}}
