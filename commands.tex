@@ -180,13 +180,16 @@
 
 \newcommand{\goToSummaryText}
 {
-    \hyperlink{summary} {\textcolor{ultramarine}{\small\mdseries [Go To Top]}}
-    {\small\mdseries |}
-    \Acrobatmenu{GoBack}{\textcolor{ultramarine}{\small\mdseries [Go Back]}}
+    \small\mdseries
+    \hyperlink{summary} {\textcolor{ultramarine}{{ } [Go To Top]}}
+    {{ }|}
+    \Acrobatmenu{GoBack}{\textcolor{ultramarine}{{ } [Go Back]}}
 }
 
+% How can the go to summary be fixed so the \section[Some]{Some more} does not throw all these errors?
+% https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more-does-not-thr
 \makeatletter
-    \newcommand{\addGoToSummary}{\renewcommand{\Sectionformat}[2]{##1 \goToSummaryText}}
+    \newcommand{\addGoToSummary}{\renewcommand{\Sectionformat}[2]{##1 \protect\goToSummaryText}}
     \newcommand{\removeGoToSummary}{\renewcommand{\Sectionformat}[2]{##1}}
 \makeatother
 
