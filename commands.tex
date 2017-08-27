@@ -248,12 +248,20 @@
 \makeatother
 \endgroup
 
+% Why the empty space size is increasing each call to my calculate listing header command?
+% https://tex.stackexchange.com/questions/388411/why-the-empty-space-size-is-increasing-each-call
+\newlength\cftlstlistingoldnumwidth
+\setlength\cftlstlistingoldnumwidth{\cftlstlistingnumwidth}
+
 % Calculate the size of the header
+%
+% What is the use of percent signs (%) at the end of lines?
+% https://tex.stackexchange.com/questions/7453/what-is-the-use-of-percent-signs-at-the-end-of-lines
 \newcommand{\calculatelisteningsheader}
 {
     \renewcommand\cftlstlistingpresnum{\lstlistingname~}
     \settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}
-    \addtolength\cftlstlistingnumwidth{\mylen} %
+    \setlength\cftlstlistingnumwidth{\dimexpr\cftlstlistingoldnumwidth+\mylen}
     \renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}
 }
 
