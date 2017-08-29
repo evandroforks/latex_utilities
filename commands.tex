@@ -332,3 +332,9 @@
 }
 
 
+
+% \MakeUppercase in \section and \chapter with hyperref cause trouble
+% https://tex.stackexchange.com/questions/199374/makeuppercase-in-section-and-chapter-with-hyperref-cause-trouble
+\newcommand{\HyperrefUppercase}[1]{\texorpdfstring{\MakeTextUppercase{#1}}{#1}}
+
+
