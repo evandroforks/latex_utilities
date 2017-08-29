@@ -220,7 +220,6 @@
 % Write the word LaTeX nicely.
 \newcommand{\latex}{\LaTeX\xspace}
 
-
 % Create a bold title all in upper case.
 \newcommand{\Title}[1]{\textbf{\MakeUppercase{#1}}}
 
@@ -229,6 +228,7 @@
 %
 % Usage \fullref{fig:envinronmentHead} or \fullref{sec:some_sec}
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}} % One single link
+
 
 
 % Setting Entries of List of Listings in LaTeX. Package Listings
@@ -269,6 +269,7 @@
 \calculatelisteningsheader
 
 
+
 % How to create my own list of things
 % https://tex.stackexchange.com/questions/61086/how-to-create-my-own-list-of-things
 \newcommand{\mythesispreliminarylistname}{Short Table of Contents}
@@ -292,5 +293,23 @@
     \refstepcounter{thesispreliminarycounter}
     \addcontentsline{tpc}{thesispreliminarycounter}{\protect\numberline{\thethesispreliminarycounter}#1}\par
 }
+
+
+
+% Customizing inline enumerate with enumitem still not working?
+% https://tex.stackexchange.com/questions/103086/customizing-inline-enumerate-with-enumitem-still-not-working
+\newlist{inlinelist}{enumerate*}{1}
+\setlist*[inlinelist]{label=\arabic*.}
+
+% Lengths and when to use them
+% https://tex.stackexchange.com/questions/41476/lengths-and-when-to-use-them
+%
+% For the inline enumerate: controlling the item spacing
+% https://tex.stackexchange.com/questions/211097/for-the-inline-enumerate-controlling-the-item-spacing
+\newcommand{\wordslistlabled}[1]
+{
+    \begin{inlinelist}[label=\arabic*.,itemjoin=\hspace{5pt},afterlabel=\hspace{3pt}]#1\end{inlinelist}
+}
+\newcommand{\wordslistunlabled}[1]{\begin{inlinelist}[label=,itemjoin=\hspace{1pt}]#1\end{inlinelist}}
 
 
