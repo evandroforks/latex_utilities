@@ -272,26 +272,26 @@
 
 % How to create my own list of things
 % https://tex.stackexchange.com/questions/61086/how-to-create-my-own-list-of-things
-\newcommand{\mythesispreliminarylistname}{Short Table of Contents}
-\newlistof{thesispreliminarycontents}{tpc}{\mythesispreliminarylistname}
+\newcommand{\mytextpreliminarylistname}{Short Table of Contents}
+\newlistof{textpreliminarycontents}{tpc}{\mytextpreliminarylistname}
 
 % Resetting counter
 % https://tex.stackexchange.com/questions/66604/resetting-counter
 %
 % Custom list throw LaTeX Error: Command \mycustomfiction already defined?
 % https://tex.stackexchange.com/questions/388489/custom-list-throw-latex-error-command-mycustomfiction-already-defined
-\newlistentry{thesispreliminarycounter}{tpc}{0}
+\newlistentry{textpreliminarycounter}{tpc}{0}
 
 % Continuing Page Numbering (Roman to Arabic)
 % https://tex.stackexchange.com/questions/56131/continuing-page-numbering-roman-to-arabic
-\renewcommand{\thethesispreliminarycounter}{\arabic{thesispreliminarycounter}}
+\renewcommand{\thetextpreliminarycounter}{\arabic{textpreliminarycounter}}
 
 % Reset section numbering between unnumbered chapters
 % https://tex.stackexchange.com/questions/71162/reset-section-numbering-between-unnumbered-chapters
-\newcommand{\addtothesispreliminarycontent}[1]
+\newcommand{\addtotextpreliminarycontent}[1]
 {%
-    \refstepcounter{thesispreliminarycounter}
-    \addcontentsline{tpc}{thesispreliminarycounter}{\protect\numberline{\thethesispreliminarycounter}#1}\par
+    \refstepcounter{textpreliminarycounter}
+    \addcontentsline{tpc}{textpreliminarycounter}{\protect\numberline{\thetextpreliminarycounter}#1}\par
 }
 
 
