@@ -32,7 +32,7 @@
 % https://tex.stackexchange.com/questions/365818/how-could-the-everypar-justification-statement-be-used
 \newbox\linebox \newbox\snapbox
 \def\eatlines
-{
+{%
     \setbox\linebox\lastbox % check the last line
     \ifvoid\linebox
     \else % if it’s not empty
@@ -49,9 +49,9 @@
 % How could the `\everypar` justification statement be used?
 % https://tex.stackexchange.com/questions/365818/how-could-the-everypar-justification-statement-be-used
 \everypar=
-{
-    \setbox0=\lastbox \par
-    \vbox\bgroup \everypar={}\def\par{\endgraf\eatlines\egroup}
+{%
+    \setbox0=\lastbox \par%
+    \vbox\bgroup \everypar={}\def\par{\endgraf\eatlines\egroup}%
 }
 
 
@@ -65,10 +65,10 @@
 %
 % https://tex.stackexchange.com/questions/62333/push-long-words-in-a-new-line
 \newenvironment{foo}
-{
-    \par
-    \hyphenpenalty=10000
-    \exhyphenpenalty=10000
+{%
+    \par%
+    \hyphenpenalty=10000%
+    \exhyphenpenalty=10000%
 }
 {\par}
 
@@ -78,16 +78,16 @@
 % How to break long URLs using common hyphenation but adding a line feed indicator?
 % https://tex.stackexchange.com/questions/69824/how-to-break-long-urls-using-common-hyphenation-but
 \def\addurlspace#1
-{
+{%
     \ifx\relax#1%
-    \else
-    \ifx/#1\space\fi
-    \ifx.#1\space\fi
+    \else%
+    \ifx/#1\space\fi%
+    \ifx.#1\space\fi%
     #1%
-    \ifx/#1\space\fi
-    \ifx.#1\space\fi
-    \expandafter\addurlspace
-    \fi
+    \ifx/#1\space\fi%
+    \ifx.#1\space\fi%
+    \expandafter\addurlspace%
+    \fi%
 }
 
 \makeatletter
@@ -100,30 +100,30 @@
     \edef\savedhchar{\the\hyphenchar\font}%
     \global\setbox1\hbox{}%
     \setbox0=\vbox
-    {
-        \hsize=2pt\rightskip=0pt plus 1fill
-        \hfuzz\maxdimen
-        \tracinglostchars0
-        \overfullrule0pt
-        \hyphenchar\font=\csname \f@encoding-zwidthchar\endcsname
-        \noindent \hskip0pt \addurlspace #1\relax
-        \par
-        \loop
-        \setbox4 \lastbox
-        \ifvoid4 \else
-        \global\setbox1\hbox
-        {
-            \unhbox4\unskip\unskip\discretionary{\hbox{\rlap{$\leftarrow$}}}{}{}\unhbox1
+    {%
+        \hsize=2pt\rightskip=0pt plus 1fill%
+        \hfuzz\maxdimen%
+        \tracinglostchars0%
+        \overfullrule0pt%
+        \hyphenchar\font=\csname \f@encoding-zwidthchar\endcsname%
+        \noindent \hskip0pt \addurlspace #1\relax%
+        \par%
+        \loop%
+        \setbox4 \lastbox%
+        \ifvoid4 \else%
+        \global\setbox1\hbox%
+        {%
+            \unhbox4\unskip\unskip\discretionary{\hbox{\rlap{$\leftarrow$}}}{}{}\unhbox1%
         }%
-        \unskip
-        \unskip
-        \unpenalty
-        \unskip
-        \repeat
+        \unskip%
+        \unskip%
+        \unpenalty%
+        \unskip%
+        \repeat%
     }%
-    \unhbox1
-    \hyphenchar\font\savedhchar
-    \relax
+    \unhbox1%
+    \hyphenchar\font\savedhchar%
+    \relax%
 }
 
 \makeatother
@@ -135,7 +135,7 @@
 \usepackage[most]{tcolorbox}
 \definecolor{shadecolor}{RGB}{219, 229, 241}
 \newtcolorbox{myquote}
-{
+{%
     colback=shadecolor,
     grow to right by=-2mm,
     grow to left by=-2mm,
@@ -170,7 +170,7 @@
 \newcolumntype{B}{>{\global\let\currentrowstyle\relax}}
 \newcolumntype{^}{>{\currentrowstyle}}
 \newcommand{\rowstyle}[1]
-{
+{%
     \gdef\currentrowstyle{#1}#1\ignorespaces
 }
 
@@ -180,7 +180,7 @@
 \definecolor{ultramarine}{RGB}{0,32,96}
 
 \newcommand{\goToSummaryText}
-{
+{%
     \small\mdseries
     \hyperlink{summary}{\textcolor{ultramarine}{$\leftleftarrows$}}
     {$|$}
@@ -196,10 +196,10 @@
 
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}
-{
+{%
     % Insert internal document link
-    \hypertarget{summary}
-    \oldtableofcontents
+    \hypertarget{summary}%
+    \oldtableofcontents%
 }
 
 
@@ -258,11 +258,11 @@
 % What is the use of percent signs (%) at the end of lines?
 % https://tex.stackexchange.com/questions/7453/what-is-the-use-of-percent-signs-at-the-end-of-lines
 \newcommand{\calculatelisteningsheader}
-{
-    \renewcommand\cftlstlistingpresnum{\lstlistingname~}
-    \settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}
-    \setlength\cftlstlistingnumwidth{\dimexpr\cftlstlistingoldnumwidth+\mylen}
-    \renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}
+{%
+    \renewcommand\cftlstlistingpresnum{\lstlistingname~}%
+    \settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}%
+    \setlength\cftlstlistingnumwidth{\dimexpr\cftlstlistingoldnumwidth+\mylen}%
+    \renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}%
 }
 
 % Ensure it is called at least one time
@@ -290,8 +290,8 @@
 % https://tex.stackexchange.com/questions/71162/reset-section-numbering-between-unnumbered-chapters
 \newcommand{\addtotextpreliminarycontent}[1]
 {%
-    \refstepcounter{textpreliminarycounter}
-    \addcontentsline{tpc}{textpreliminarycounter}{\protect\numberline{\thetextpreliminarycounter}#1}\par
+    \refstepcounter{textpreliminarycounter}%
+    \addcontentsline{tpc}{textpreliminarycounter}{\protect\numberline{\thetextpreliminarycounter}#1}\par%
 }
 
 
@@ -306,9 +306,9 @@
 %
 % For the inline enumerate: controlling the item spacing
 % https://tex.stackexchange.com/questions/211097/for-the-inline-enumerate-controlling-the-item-spacing
-\newcommand{\wordslistlabled}[1]
-{
-    \begin{inlinelist}[label=\arabic*.,itemjoin=\hspace{5pt},afterlabel=\hspace{3pt}]#1\end{inlinelist}
+\newcommand{\wordslistlabled}[1]%
+{%
+    \begin{inlinelist}[label=\arabic*.,itemjoin=\hspace{5pt},afterlabel=\hspace{3pt}]#1\end{inlinelist}%
 }
 \newcommand{\wordslistunlabled}[1]{\begin{inlinelist}[label=,itemjoin=\hspace{1pt}]#1\end{inlinelist}}
 
@@ -320,15 +320,15 @@
 \newcounter{currentpagecounter}
 
 \newcommand{\addlabelstoallincludedpages}[1]
-{
-    \refstepcounter{includepdfpage}
-    \stepcounter{currentpagecounter}
-    \label{#1.\thecurrentpagecounter}
+{%
+    \refstepcounter{includepdfpage}%
+    \stepcounter{currentpagecounter}%
+    \label{#1.\thecurrentpagecounter}%
 }
 \newcommand{\modifiedincludepdf}[4]
-{
-    \setcounter{currentpagecounter}{0}
-    \includepdf[pages=#1,pagecommand=\addlabelstoallincludedpages{#2},scale=#4]{#3}
+{%
+    \setcounter{currentpagecounter}{0}%
+    \includepdf[pages=#1,pagecommand=\addlabelstoallincludedpages{#2},scale=#4]{#3}%
 }
 
 
