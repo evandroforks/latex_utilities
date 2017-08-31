@@ -296,24 +296,6 @@
 
 
 
-% Customizing inline enumerate with enumitem still not working?
-% https://tex.stackexchange.com/questions/103086/customizing-inline-enumerate-with-enumitem-still-not-working
-\newlist{inlinelist}{enumerate*}{1}
-\setlist*[inlinelist]{label=\arabic*.}
-
-% Lengths and when to use them
-% https://tex.stackexchange.com/questions/41476/lengths-and-when-to-use-them
-%
-% For the inline enumerate: controlling the item spacing
-% https://tex.stackexchange.com/questions/211097/for-the-inline-enumerate-controlling-the-item-spacing
-\newcommand{\wordslistlabled}[1]%
-{%
-    \begin{inlinelist}[label=\arabic*.,itemjoin=\hspace{5pt},afterlabel=\hspace{3pt}]#1\end{inlinelist}%
-}
-\newcommand{\wordslistunlabled}[1]{\begin{inlinelist}[label=,itemjoin=\hspace{1pt}]#1\end{inlinelist}}
-
-
-
 % Unable to link to inserted pages with pdfpages
 % Solution from http://tex.stackexchange.com/questions/25105/unable-to-link-to-inserted-pages-with-pdfpages
 \newcounter{includepdfpage}
