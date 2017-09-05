@@ -46,6 +46,7 @@
 }
 
 
+
 % How could the `\everypar` justification statement be used?
 % https://tex.stackexchange.com/questions/365818/how-could-the-everypar-justification-statement-be-used
 \everypar=
@@ -53,7 +54,6 @@
     \setbox0=\lastbox \par%
     \vbox\bgroup \everypar={}\def\par{\endgraf\eatlines\egroup}%
 }
-
 
 % Creates a new environment which can be used as:
 %
@@ -71,6 +71,7 @@
     \exhyphenpenalty=10000%
 }
 {\par}
+
 
 
 % Some text \brkurl{http://www.example.com/this/directory/here}
@@ -91,7 +92,6 @@
 }
 
 \makeatletter
-
 \@namedef{OT1-zwidthchar}{255}
 \@namedef{T1-zwidthchar}{"17}
 
@@ -125,8 +125,8 @@
     \hyphenchar\font\savedhchar%
     \relax%
 }
-
 \makeatother
+
 
 
 % Change background color for text block
@@ -143,6 +143,7 @@
     boxsep=0pt,
     breakable,
 }
+
 
 
 % Make first row of table all bold
@@ -175,6 +176,7 @@
 }
 
 
+
 % How to automatically put a [Go To Summary] | [Go Back] on each section?
 % https://tex.stackexchange.com/questions/367859/how-to-automatically-put-a-go-to-summary-go-back-on-each-section
 \definecolor{ultramarine}{RGB}{0,32,96}
@@ -186,6 +188,8 @@
     {$|$}
     \Acrobatmenu{GoBack}{\textcolor{ultramarine}{$\leftarrow$}}
 }
+
+
 
 % How can the go to summary be fixed so the \section[Some]{Some more} does not throw all these errors?
 % https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more
@@ -327,19 +331,21 @@
 % Why the environment ttfamily is hyphenated, but macro ttfamily is not hyphenating?
 % https://tex.stackexchange.com/questions/387678/why-the-environment-ttfamily-is-hyphenated-but-macro-ttfamily-is-not-hyphenatin
 \LetLtxMacro\origttfamily\ttfamily
-\DeclareRobustCommand*{\ttfamily}{%
-  \origttfamily
-  \hyphenchar\font=`\-\relax
-  \fontdimen3\font=.25em\relax
-  \fontdimen4\font=.13em\relax
-  \fontdimen7\font=.167em\relax
+\DeclareRobustCommand*{\ttfamily}
+{%
+    \origttfamily
+    \hyphenchar\font=`\-\relax
+    \fontdimen3\font=.25em\relax
+    \fontdimen4\font=.13em\relax
+    \fontdimen7\font=.167em\relax
 }
 
 \makeatletter
-\DeclareRobustCommand\vttfamily{%
-  \not@math@alphabet\vttfamily\relax
-  \fontfamily{cmvtt}% cmvtt (Computer Modern) or lmvtt (Latin Modern)
-  \selectfont
+\DeclareRobustCommand\vttfamily
+{%
+    \not@math@alphabet\vttfamily\relax
+    \fontfamily{cmvtt}% cmvtt (Computer Modern) or lmvtt (Latin Modern)
+    \selectfont
 }
 \DeclareTextFontCommand{\textvtt}{\vttfamily}
 \makeatother
