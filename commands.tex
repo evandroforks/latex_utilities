@@ -351,3 +351,31 @@
 \makeatother
 
 
+
+% Logical String Length
+% https://tex.stackexchange.com/questions/87638/logical-string-length
+\newcommand{\includeonlyfilelist}[0]{}
+\makeatletter
+\newcommand{\addtoincludeonly}[1]
+{%
+    \StrLen{\includeonlyfilelist}[\includeonlyfilelistlen]
+
+    % How to concatenate strings into a single command?
+    % https://tex.stackexchange.com/questions/74707/how-to-concatenate-strings-into-a
+    \ifnum\includeonlyfilelistlen>0
+        \g@addto@macro\includeonlyfilelist{,#1}
+    \else
+        \g@addto@macro\includeonlyfilelist{#1}
+    \fi
+}
+\newcommand{\doincludeonly}[1]
+{%
+    \StrLen{\includeonlyfilelist}[\includeonlyfilelistlen]
+    \ifnum\includeonlyfilelistlen>0
+        \includeonly{\includeonlyfilelist}
+    \else
+    \fi
+}
+\makeatother
+
+
