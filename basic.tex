@@ -29,15 +29,17 @@
 % https://tex.stackexchange.com/questions/150369/incompatible-color-definition-when-using-tikz-with-color-package
 \usepackage{xcolor}
 
-% RGB colors in absolute values from 0 to 255 by using `RGB` tag
-\definecolor{darkblue}{RGB}{26,13,178}
+% Package setspace must be put before hyperref
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
+\@ifclassloaded{memoir}{}{\usepackage{setspace}}
 
-% RGB colors in percentage notation by using `rgb` tag
-\definecolor{darkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\@ifpackageloaded{changepage}{}{\usepackage[backref,colorlinks,linkcolor=darkblue,citecolor=darkgreen]{hyperref}}
+% Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+% https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
+%
+% Package float must be put before hyperref
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
+\usepackage{float}
+\usepackage{hyperref}
 
 
 % pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
@@ -68,10 +70,6 @@
 % Required for including pictures, resizebox
 \usepackage{graphicx}
 
-% Allows putting an [H] in \begin{figure} to specify the exact location of the figure
-% https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
-\usepackage{float}
-
 % Allows in-line images such as the example fish picture
 \usepackage{wrapfig}
 
@@ -82,7 +80,7 @@
 % Use its macro adjustwidth* to extend tables out of outer text border.
 % https://tex.stackexchange.com/questions/366155/how-to-write-a-table-a-little-larger-than-the-paragraphs-with-centered-columns
 %
-% The `memoir` class emulates this package, so not try to load it when using `memoir`: ifpackageloaded question
+% The `memoir` class emulates this package, so not try to load it when using `memoir`, ifpackageloaded question
 % https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \@ifpackageloaded{changepage}{}{\usepackage[strict]{changepage}}
 
@@ -144,7 +142,16 @@
 \usepackage{pdfpages}
 \usepackage{fancyvrb}
 \usepackage{rotating}
+
+% Needs to be loaded after hyperref
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
+%
+% Package incompatibilty between alphalph, and hyperref with amsmath subequations
+% https://tex.stackexchange.com/questions/134665/package-incompatibilty-between-alphalph-and-hyperref-with-amsmath-subequations
 \usepackage{amsmath}
+\let\equation\gather
+\let\endequation\endgather
+
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{pdflscape}
