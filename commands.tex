@@ -206,9 +206,30 @@
 
 % How can the go to summary be fixed so the \section[Some]{Some more} does not throw all these errors?
 % https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more
+%
+% What is the equivalent to `\Sectionformat` on memoir class for `\Chapterformat`?
+% https://tex.stackexchange.com/questions/399635/what-is-the-equivalent-to-sectionformat-on-memoir-class-for-chapterformat
 \makeatletter
-    \newcommand{\addGoToSummary}{\renewcommand{\Sectionformat}[2]{##1 \protect\goToSummaryText}}
-    \newcommand{\removeGoToSummary}{\renewcommand{\Sectionformat}[2]{##1}}
+    \newif\ifismemoirloaded\ismemoirloadedfalse
+    \@ifclassloaded{memoir}
+    {%
+        \ismemoirloadedtrue
+    }{}
+    \newcommand{\addGoToSummary}
+    {%
+        \renewcommand{\Sectionformat}[2]{##1 \protect\goToSummaryText}
+        \ifismemoirloaded
+            \let\oldprintchaptertitle\printchaptertitle
+            \renewcommand{\printchaptertitle}[1]{\oldprintchaptertitle{##1} \protect\goToSummaryText}
+        \else\fi
+    }
+    \newcommand{\removeGoToSummary}
+    {%
+        \renewcommand{\Sectionformat}[2]{##1}
+        \ifismemoirloaded
+            \let\printchaptertitle\oldprintchaptertitle
+        \else\fi
+    }
 \makeatother
 
 \let\oldtableofcontents\tableofcontents
