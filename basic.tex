@@ -236,6 +236,17 @@
 % https://tex.stackexchange.com/questions/391901/how-to-create-my-own-caption-type-with-declarecaptiontype-on-memoir-class
 \usepackage{caption}
 
+% Para incluir links com characteres especiais como # em URLs em `\footnote`
+% https://tex.stackexchange.com/questions/12855/getting-those-signs-in-the-footnote
+% https://tex.stackexchange.com/questions/299348/animate-gives-errors-when-i-also-use-bigfoot-or-cprotect
+%
+% Adding this will cause the warning``bigfoot.sty:61: Package hyperref Warning:
+% Option `hyperfootnotes' has already been used...` because `bigfoot` already set it to false.
+%
+% Currently you need to edit `bigfoot/bigfoot.sty` and comment the line 61 to fix this:
+% https://tex.stackexchange.com/questions/402652/bigfoot-sty61-package-hyperref-warning-option-hyperfootnotes-has-already-be
+\usepackage{bigfoot}
+
 
 
 \makeatother
