@@ -39,6 +39,10 @@
 % Package float must be put before hyperref
 % http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
 \usepackage{float}
+
+% bigfoot.sty:61: Package hyperref Warning: Option `hyperfootnotes' has already been used
+% https://tex.stackexchange.com/questions/402652/bigfoot-sty61-package-hyperref-warning-option-hyperfootnotes-has-already-be
+\@ifpackageloaded{hyperref}{\hypersetup{hyperfootnotes=false}}{\PassOptionsToPackage{hyperfootnotes=false}{hyperref}}
 \usepackage{hyperref}
 
 
@@ -243,9 +247,12 @@
 % Adding this will cause the warning``bigfoot.sty:61: Package hyperref Warning:
 % Option `hyperfootnotes' has already been used...` because `bigfoot` already set it to false.
 %
-% Currently you need to edit `bigfoot/bigfoot.sty` and comment the line 61 to fix this:
+% bigfoot.sty:61: Package hyperref Warning: Option `hyperfootnotes' has already been used
 % https://tex.stackexchange.com/questions/402652/bigfoot-sty61-package-hyperref-warning-option-hyperfootnotes-has-already-be
+\let\truehypersetup\hypersetup
+\renewcommand\hypersetup[1]{}
 \usepackage{bigfoot}
+\let\hypersetup\truehypersetup
 
 
 
