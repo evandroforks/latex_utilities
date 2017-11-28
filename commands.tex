@@ -271,40 +271,45 @@
 
 % Setting Entries of List of Listings in LaTeX. Package Listings
 % http://tex.stackexchange.com/questions/228936/setting-entries-of-list-of-listings-in-latex-package-listings
-\newlength\mylen
-
-\renewcommand\lstlistingname{Code}
-\renewcommand\lstlistlistingname{List of Codes}
-
-\begingroup
 \makeatletter
-    \let\newcounter\@gobble\let\setcounter\@gobbletwo
-    \globaldefs\@ne \let\c@loldepth\@ne
-    \newlistof{listings}{lol}{\lstlistlistingname}
-    \newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
-    \newlistentry{lstlisting}{lol}{0}
-\makeatother
-\endgroup
-
-% Why the empty space size is increasing each call to my calculate listing header command?
-% https://tex.stackexchange.com/questions/388411/why-the-empty-space-size-is-increasing-each-call
-\newlength\cftlstlistingoldnumwidth
-\setlength\cftlstlistingoldnumwidth{\cftlstlistingnumwidth}
-
-% Calculate the size of the header
-%
-% What is the use of percent signs (%) at the end of lines?
-% https://tex.stackexchange.com/questions/7453/what-is-the-use-of-percent-signs-at-the-end-of-lines
-\newcommand{\calculatelisteningsheader}
+\@ifclassloaded{memoir}
 {%
-    \renewcommand\cftlstlistingpresnum{\lstlistingname~}%
-    \settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}%
-    \setlength\cftlstlistingnumwidth{\dimexpr\cftlstlistingoldnumwidth+\mylen}%
-    \renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}%
-}
+    \newlength\mylen
 
-% Ensure it is called at least one time
-\calculatelisteningsheader
+    \renewcommand\lstlistingname{Code}
+    \renewcommand\lstlistlistingname{List of Codes}
+
+    \begingroup
+    \makeatletter
+        \let\newcounter\@gobble\let\setcounter\@gobbletwo
+        \globaldefs\@ne \let\c@loldepth\@ne
+        \newlistof{listings}{lol}{\lstlistlistingname}
+        \newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
+        \newlistentry{lstlisting}{lol}{0}
+    \makeatother
+    \endgroup
+
+    % Why the empty space size is increasing each call to my calculate listing header command?
+    % https://tex.stackexchange.com/questions/388411/why-the-empty-space-size-is-increasing-each-call
+    \newlength\cftlstlistingoldnumwidth
+    \setlength\cftlstlistingoldnumwidth{\cftlstlistingnumwidth}
+
+    % Calculate the size of the header
+    %
+    % What is the use of percent signs (%) at the end of lines?
+    % https://tex.stackexchange.com/questions/7453/what-is-the-use-of-percent-signs-at-the-end-of-lines
+    \newcommand{\calculatelisteningsheader}
+    {%
+        \renewcommand\cftlstlistingpresnum{\lstlistingname~}%
+        \settowidth\mylen{\cftlstlistingpresnum\cftlstlistingaftersnum}%
+        \setlength\cftlstlistingnumwidth{\dimexpr\cftlstlistingoldnumwidth+\mylen}%
+        \renewcommand\cftlstlistingaftersnum{\hfill\textendash\hfill}%
+    }
+
+    % Ensure it is called at least one time
+    \calculatelisteningsheader
+}{}
+\makeatother
 
 
 
