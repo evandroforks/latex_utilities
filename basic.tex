@@ -25,6 +25,10 @@
 
 
 
+% Please tutor the usage of patchcmd and xpatch
+% https://tex.stackexchange.com/questions/152773/please-tutor-the-usage-of-patchcmd-and-xpatch
+\usepackage{xpatch}
+
 % Incompatible color definition when using tikz with color package
 % https://tex.stackexchange.com/questions/150369/incompatible-color-definition-when-using-tikz-with-color-package
 \usepackage{xcolor}
@@ -122,10 +126,8 @@
 % Codificacao do documento (conversão automática dos acentos)
 \usepackage[utf8]{inputenc}
 
-\usepackage{graphicx}  % Inclusão de gráficos
-
+\usepackage{graphicx}
 \usepackage{pdfpages}
-\usepackage{fancyvrb}
 \usepackage{rotating}
 
 % Needs to be loaded after hyperref
@@ -156,6 +158,11 @@
 \sisetup{detect-all}
 \sisetup{scientific-notation = fixed, fixed-exponent = 0, round-mode = places,round-precision = 2,output-decimal-marker = {,} }
 \DeclareSIUnit \VA {VA} % apparent power
+
+% We need to load it after `siunitx` package, otherwise it will cause to the package `bigfoot` to throw
+% the error `input stack size=5000`
+% https://tex.stackexchange.com/questions/403651/while-loading-fancyvrb-siunitx-and-bigfoot-i-got-input-stack-size-5000-tex-st
+\usepackage{fancyvrb}
 
 % Memoir class conflict with datetime
 % https://tex.stackexchange.com/questions/162353/memoir-class-conflict-with-datetime
@@ -200,10 +207,6 @@
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \usepackage{comment}
 
-% Please tutor the usage of patchcmd and xpatch
-% https://tex.stackexchange.com/questions/152773/please-tutor-the-usage-of-patchcmd-and-xpatch
-\usepackage{xpatch}
-
 % Scoping \raggedbottom to a single page
 % https://tex.stackexchange.com/questions/226716/scoping-raggedbottom-to-a-single-page
 \usepackage{afterpage}
@@ -226,14 +229,16 @@
 % https://tex.stackexchange.com/questions/299348/animate-gives-errors-when-i-also-use-bigfoot-or-cprotect
 %
 % Adding this will cause the warning``bigfoot.sty:61: Package hyperref Warning:
-% Option `hyperfootnotes' has already been used...` because `bigfoot` already set it to false.
-%
-% bigfoot.sty:61: Package hyperref Warning: Option `hyperfootnotes' has already been used
+% Option `hyperfootnotes' has 1`hyperfootnotes' has already been used
 % https://tex.stackexchange.com/questions/402652/bigfoot-sty61-package-hyperref-warning-option-hyperfootnotes-has-already-be
 \let\truehypersetup\hypersetup
 \renewcommand\hypersetup[1]{}
 \usepackage{bigfoot}
 \let\hypersetup\truehypersetup
+
+% While loading fancyvrb, siunitx and bigfoot, I got input stack size=5000, TeX STOPPED: fatal errors occurred
+% https://tex.stackexchange.com/questions/403651/while-loading-fancyvrb-siunitx-and-bigfoot-i-got-input-stack-size-5000-tex-st
+\xpatchcmd{\FN@allmarks}{266}{256}{}{}
 
 
 
