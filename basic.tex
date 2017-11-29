@@ -80,6 +80,9 @@
 % https://tex.stackexchange.com/questions/162799/compilation-error-when-including-enumitem-and-paralist-packages
 \usepackage{paralist}
 
+% Replace the `paralist` package implementation of enumerate lists
+\usepackage{enumerate}
+
 % With the package option shortlabels you can use an enumerate-like syntax, where A, a, I, i and 1
 % stand for \Alph*, \alph*, \Roman*, \roman* and \arabic*. This is intended mainly as a sort of
 % compatibility mode with the enumerate package, and therefore the following special rule applies:
@@ -88,8 +91,7 @@
 %
 % No spacing between enumerated items with \usepackage{enumerate}
 % https://tex.stackexchange.com/questions/119919/no-spacing-between-enumerated-items-with-usepackageenumerate
-\@ifpackageloaded{changepage}{}{\usepackage[shortlabels]{enumitem}}
-\@ifpackageloaded{changepage}{}{\usepackage[hyphens]{url}}
+\usepackage[shortlabels]{enumitem}
 
 \usepackage{tabularx}
 \usepackage{multirow}
