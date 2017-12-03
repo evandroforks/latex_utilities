@@ -192,8 +192,10 @@
 
 % How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
 % https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
-\usepackage{ltablex}
-\keepXColumns
+%
+% Why ltablex package breaks the changepage package?
+% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
+% \usepackage{ltablex}\keepXColumns
 
 % How to use \scalebox around my environment?
 % https://tex.stackexchange.com/questions/387515/how-to-use-scalebox-around-my-environment
