@@ -9,10 +9,16 @@ Usage example:
 %   File settings
 %----------------------------------------------------------------------------------------
 
-% Utilities files
-\input{../../latex_utilities/basic}
-\input{../../latex_utilities/commands}
-\input{../../latex_utilities/programming}
+% Load all required basic packages
+\input{utilities/basic}
+\input{utilities/commands}
+
+% Bad boxes settings and programming environments
+\input{utilities/badboxes}
+\input{utilities/programming}
+
+% Input a empty list of commands when on debug mode
+\input{utilities/commands_list}
 
 % ...
 ```
@@ -66,33 +72,31 @@ Full example:
 % Sets this document language usage to Portuguese
 \usepackage[brazil]{babel}
 
-% Required to change the page size to A4
-% \usepackage{geometry}
-%
-% Sets this document output papel to A4 within 2 centimeters margin
-% \geometry{a4paper}
-%
 % Set the page size to be A4 as opposed to the default US Letter
 \usepackage[a4paper, margin=2cm]{geometry}
-
-
-% Always use it as should improve full justification
 
 
 %----------------------------------------------------------------------------------------
 %   File settings
 %----------------------------------------------------------------------------------------
 
-% Utilities files
-\input{../../latex_utilities/basic}
-\input{../../latex_utilities/commands}
-\input{../../latex_utilities/programming}
+% Load all required basic packages
+\input{utilities/basic}
+\input{utilities/commands}
+
+% Bad boxes settings and programming environments
+\input{utilities/badboxes}
+\input{utilities/programming}
+
+% Input a empty list of commands when on debug mode
+\input{utilities/commands_list}
 
 % To use the font Times New Roman, instead of the default LaTeX font
 % \usepackage{mathptmx}
 %
 % more up-to-date than 'mathptmx'
 \usepackage{newtxtext,newtxmath}
+
 % https://tex.stackexchange.com/questions/10377/texttt-overfull-hbox-problem
 % https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
 \usepackage{microtype}
@@ -105,48 +109,12 @@ Full example:
 % \linespread{1.5}
 % https://tex.stackexchange.com/questions/30073/why-is-the-linespread-factor-as-it-is
 \usepackage{setspace}
+
 % \doublespacing
 \onehalfspacing
 
 % Specifies the directory where pictures are stored
 \graphicspath{{pictures/}}
-
-
-
-%----------------------------------------------------------------------------------------
-%   Bad Boxes settings
-%----------------------------------------------------------------------------------------
-
-% Bad formatting using URLs in bibtex
-% https://tex.stackexchange.com/questions/22888/bad-formatting-using-urls-in-bibtex
-\usepackage{etoolbox}
-
-% Underfull \hbox in bibliography
-% https://tex.stackexchange.com/questions/10924/underfull-hbox-in-bibliography
-\apptocmd{\thebibliography}{\raggedright}{}{}
-
-% How to avoid overfull error with url package?
-% https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
-%
-% See also the `\usepackage{url}` declarationon the file `basic.tex`.
-% Set this to 2mu or 3mu if URL start troubling again.
-\Urlmuskip=0mu plus 1mu
-
-% Automatically put a `\medskip` spacing between paragraphs
-%
-% How to stop the package \usepackage{parskip} disabling the paragraph indentation?
-% https://tex.stackexchange.com/questions/365976/
-%
-% \edef\restoreparindent{\parindent=\the\parindent\relax}
-% \usepackage{parskip}
-% \restoreparindent
-%
-% Uncomment to remove all indentation from paragraphs
-%\setlength\parindent{0pt}
-%
-% How to restore the parskip skips between list items?
-% https://tex.stackexchange.com/questions/366848/
-\parskip=0.5\baselineskip \advance\parskip by 0pt plus 2pt
 ```
 
 
@@ -206,12 +174,12 @@ Full example:
 % https://tex.stackexchange.com/questions/27710/how-can-i-use-author-date-and-title-after-maketitle
 \makeatletter
 \author{Student}\let\Author\@author
+
 % \author{Someone}          \let\Author\@author
 % \date{Somewhen}           \let\Date\@date
 \def\Advisor{Person A}
 \def\Supervisor{B Person}
 \makeatother
-
 
 \include{cover}
 \include{abstract}
@@ -223,9 +191,9 @@ Full example:
 \include{introduction}
 \include{schedule}
 % ...
+
 \bibliographystyle{abbrv}
 \bibliography{refs}
-
 
 \end{document}
 ```
