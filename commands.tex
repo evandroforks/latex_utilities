@@ -276,8 +276,11 @@
 {%
     \newlength\mylen
 
-    \renewcommand\lstlistingname{Code}
-    \renewcommand\lstlistlistingname{List of Codes}
+    \addto\captionsbrazil{\renewcommand{\lstlistingname}{Código}}
+    \addto\captionsbrazil{\renewcommand{\lstlistlistingname}{Lista de códigos}}
+
+    \addto\captionsenglish{\renewcommand{\lstlistingname}{Code}}
+    \addto\captionsenglish{\renewcommand{\lstlistlistingname}{List of Codes}}
 
     \begingroup
     \makeatletter
@@ -308,6 +311,9 @@
 
     % Ensure it is called at least one time
     \calculatelisteningsheader
+
+    % https://tex.stackexchange.com/questions/14135/how-to-automatically-add-text-immediately-after-begindocument
+    \AtBeginDocument{\calculatelisteningsheader}
 }{}
 \makeatother
 
