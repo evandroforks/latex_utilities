@@ -10,15 +10,15 @@ Usage example:
 %----------------------------------------------------------------------------------------
 
 % Load all required basic packages
-\input{utilities/basic}
-\input{utilities/commands}
+\input{utilities/basic.tex}
+\input{utilities/commands.tex}
 
 % Bad boxes settings and programming environments
-\input{utilities/badboxes}
-\input{utilities/programming}
+\input{utilities/badboxes.tex}
+\input{utilities/programming.tex}
 
 % Input a empty list of commands when on debug mode
-\input{utilities/commands_list}
+\input{utilities/commands_list.tex}
 
 % ...
 ```
@@ -81,15 +81,15 @@ Full example:
 %----------------------------------------------------------------------------------------
 
 % Load all required basic packages
-\input{utilities/basic}
-\input{utilities/commands}
+\input{utilities/basic.tex}
+\input{utilities/commands.tex}
 
 % Bad boxes settings and programming environments
-\input{utilities/badboxes}
-\input{utilities/programming}
+\input{utilities/badboxes.tex}
+\input{utilities/programming.tex}
 
 % Input a empty list of commands when on debug mode
-\input{utilities/commands_list}
+\input{utilities/commands_list.tex}
 
 % To use the font Times New Roman, instead of the default LaTeX font
 % \usepackage{mathptmx}
