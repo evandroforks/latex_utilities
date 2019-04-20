@@ -272,15 +272,15 @@
 % Setting Entries of List of Listings in LaTeX. Package Listings
 % http://tex.stackexchange.com/questions/228936/setting-entries-of-list-of-listings-in-latex-package-listings
 \makeatletter
-\@ifclassloaded{memoir}
-{%
+\@ifclassloaded{memoir}{%
     \newlength\mylen
 
-    \addto\captionsbrazil{\renewcommand{\lstlistingname}{Código}}
-    \addto\captionsbrazil{\renewcommand{\lstlistlistingname}{Lista de códigos}}
+    % https://tex.stackexchange.com/questions/485830/why-latex-does-not-tell-me-which-command-is-undefined
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\lstlistingname}{Código}}}{}}{}
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\lstlistlistingname}{Lista de códigos}}}{}}{}
 
-    \addto\captionsenglish{\renewcommand{\lstlistingname}{Code}}
-    \addto\captionsenglish{\renewcommand{\lstlistlistingname}{List of Codes}}
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{english}{\addto\captionsenglish{\renewcommand{\lstlistingname}{Code}}}{}}{}
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{english}{\addto\captionsenglish{\renewcommand{\lstlistlistingname}{List of Codes}}}{}}{}
 
     \begingroup
     \makeatletter
