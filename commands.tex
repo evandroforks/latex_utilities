@@ -198,13 +198,12 @@
 \RequirePackage{xpatch}
 \RequirePackage{amssymb}
 \RequirePackage{hyperref}
-\newcommand{\goToSummaryText}
-{%
+\newcommand{\goToSummaryText}{{%
     \small\mdseries
     \hyperlink{summary}{\textcolor{ultramarine}{$\leftleftarrows$}}
     {$|$}
     \Acrobatmenu{GoBack}{\textcolor{ultramarine}{$\leftarrow$}}
-}
+}}
 \makeatletter
     \newif\ifismemoirloaded\ismemoirloadedfalse
     \newif\ifisabntexloaded\isabntexloadedfalse
@@ -220,14 +219,7 @@
             be applied because there is no printparttitle command available!^^J}}{%
             \let\oldAddGoToprintparttitle\printparttitle
             \let\oldAddGoToprintpartnum\printpartnum
-            \xapptocmd{\printpartnum}{%
-                \let\oldAddGoTomidpartskip\midpartskip%
-                \renewcommand{\midpartskip}{\par\vskip 30pt}%
-            }{}{}
-            \xapptocmd{\printparttitle}{%
-                \let\midpartskip\oldAddGoTomidpartskip%
-                ~\protect\goToSummaryText%
-            }{}{}
+            \xapptocmd{\printparttitle}{~\protect\goToSummaryText}{}{}
         }
         \@ifundefined{Sectionformat}{\message{Sectionformat patch for addGoToSummary could NOT
             be applied because there is no Sectionformat command available!^^J}}{%
