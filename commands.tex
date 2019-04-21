@@ -216,13 +216,12 @@
     \newcommand{\addGoToSummary}
     {%
         \@ifundefined{printparttitle}{\message{printparttitle patch for addGoToSummary could NOT
-            be applied because there is no printparttitle command available!^^J}}{%
+                    be applied because there is no printparttitle command available!^^J}}{%
             \let\oldAddGoToprintparttitle\printparttitle
-            \let\oldAddGoToprintpartnum\printpartnum
             \xapptocmd{\printparttitle}{~\protect\goToSummaryText}{}{}
         }
         \@ifundefined{Sectionformat}{\message{Sectionformat patch for addGoToSummary could NOT
-            be applied because there is no Sectionformat command available!^^J}}{%
+                    be applied because there is no Sectionformat command available!^^J}}{%
             \let\oldAddGoToSectionformat\Sectionformat
             \xapptocmd{\Sectionformat}{~\protect\goToSummaryText}{}{}
         }
@@ -236,7 +235,7 @@
             \fi
         \else
             \@ifundefined{Chapterformat}{\message{Chapterformat patch for addGoToSummary could NOT
-                be applied because there is no Chapterformat command available!^^J}}{%
+                        be applied because there is no Chapterformat command available!^^J}}{%
                 \let\oldAddGoToChapterformat\Chapterformat
                 \xapptocmd{\Chapterformat}{~\protect\goToSummaryText}{}{}
             }
@@ -244,26 +243,16 @@
     }
     \newcommand{\removeGoToSummary}
     {%
-        \@ifundefined{printparttitle}{\message{printparttitle patch for removeGoToSummary could NOT
-            be applied because there is no printparttitle command available!^^J}}{%
-            \let\printparttitle\oldAddGoToprintparttitle
-            \let\printpartnum\oldAddGoToprintpartnum
-        }
-        \@ifundefined{Sectionformat}{\message{Sectionformat patch for removeGoToSummary could NOT
-            be applied because there is no Sectionformat command available!^^J}}{%
-            \let\Sectionformat\oldAddGoToSectionformat
-        }
+        \@ifundefined{oldAddGoToprintparttitle}{}{\let\printparttitle\oldAddGoToprintparttitle}
+        \@ifundefined{oldAddGoToSectionformat}{}{\let\Sectionformat\oldAddGoToSectionformat}
         \ifismemoirloaded
             \ifisabntexloaded
-                \let\ABNTEXchapterupperifneeded\oldAddGoToABNTEXchapterupperifneeded
+                \@ifundefined{oldAddGoToABNTEXchapterupperifneeded}{}{\let\ABNTEXchapterupperifneeded\oldAddGoToABNTEXchapterupperifneeded}
             \else
-                \let\printchaptertitle\oldAddGoToprintchaptertitle
+                \@ifundefined{oldAddGoToprintchaptertitle}{}{\let\printchaptertitle\oldAddGoToprintchaptertitle}
             \fi
         \else
-            \@ifundefined{Chapterformat}{\message{Chapterformat patch for removeGoToSummary could NOT
-                be applied because there is no Chapterformat command available!^^J}}{%
-                \let\Chapterformat\oldAddGoToChapterformat%
-            }
+            \@ifundefined{oldAddGoToChapterformat}{}{\let\Chapterformat\oldAddGoToChapterformat}
         \fi
     }
 \makeatother
