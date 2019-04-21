@@ -189,11 +189,13 @@
 }
 
 
-
-% How to automatically put a [Go To Summary] | [Go Back] on each section?
+% https://tex.stackexchange.com/questions/485834/why-abntex2-class-is-inserting-a-new-line-after-the-chapter-title
 % https://tex.stackexchange.com/questions/367859/how-to-automatically-put-a-go-to-summary-go-back-on-each-section
+% https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more
+% https://tex.stackexchange.com/questions/399635/what-is-the-equivalent-to-sectionformat-on-memoir-class-for-chapterformat
 \definecolor{ultramarine}{RGB}{0,32,96}
-
+\RequirePackage{amssymb}
+\RequirePackage{hyperref}
 \newcommand{\goToSummaryText}
 {%
     \small\mdseries
@@ -201,41 +203,55 @@
     {$|$}
     \Acrobatmenu{GoBack}{\textcolor{ultramarine}{$\leftarrow$}}
 }
-
-
-
-% How can the go to summary be fixed so the \section[Some]{Some more} does not throw all these errors?
-% https://tex.stackexchange.com/questions/388045/how-can-the-go-to-summary-be-fixed-so-the-sectionsomesome-more
-%
-% What is the equivalent to `\Sectionformat` on memoir class for `\Chapterformat`?
-% https://tex.stackexchange.com/questions/399635/what-is-the-equivalent-to-sectionformat-on-memoir-class-for-chapterformat
 \makeatletter
     \newif\ifismemoirloaded\ismemoirloadedfalse
-    \@ifclassloaded{memoir}
-    {%
-        \ismemoirloadedtrue
+    \newif\ifisabntexloaded\isabntexloadedfalse
+    \@ifclassloaded{memoir}{%
+        \ismemoirloadedtrue%
+    }{}
+    \@ifclassloaded{abntex2}{%
+        \isabntexloadedtrue%
     }{}
     \newcommand{\addGoToSummary}
     {%
+        \let\oldSectionformat\Sectionformat
         \renewcommand{\Sectionformat}[2]{##1 \protect\goToSummaryText}
         \ifismemoirloaded
-            \let\oldprintchaptertitle\printchaptertitle
-            \renewcommand{\printchaptertitle}[1]{\oldprintchaptertitle{##1} \protect\goToSummaryText}
-        \else\fi
+            \ifisabntexloaded
+                \let\oldABNTEXchapterupperifneeded\ABNTEXchapterupperifneeded
+                \renewcommand{\ABNTEXchapterupperifneeded}[1]{\oldABNTEXchapterupperifneeded{##1} \protect\goToSummaryText}
+            \else
+                \let\oldprintchaptertitle\printchaptertitle
+                \renewcommand{\printchaptertitle}[1]{\oldprintchaptertitle{##1} \protect\goToSummaryText}
+            \fi
+        \else
+            \@ifundefined{Chapterformat}{\message{Chapterformat patch for addGoToSummary could NOT
+                be applied because there is no Chapterformat command available!^^J}}{%
+                \let\oldChapterformat\Chapterformat
+                \renewcommand{\Chapterformat}[2]{\oldChapterformat{##1} \protect\goToSummaryText}%
+            }
+        \fi
     }
     \newcommand{\removeGoToSummary}
     {%
-        \renewcommand{\Sectionformat}[2]{##1}
+        \let\Sectionformat\oldSectionformat
         \ifismemoirloaded
-            \let\printchaptertitle\oldprintchaptertitle
-        \else\fi
+            \ifisabntexloaded
+                \let\ABNTEXchapterupperifneeded\oldABNTEXchapterupperifneeded
+            \else
+                \let\printchaptertitle\oldprintchaptertitle
+            \fi
+        \else
+            \@ifundefined{Chapterformat}{\message{Chapterformat patch for removeGoToSummary could NOT
+                be applied because there is no Chapterformat command available!^^J}}{%
+                \let\Chapterformat\oldChapterformat%
+            }
+        \fi
     }
 \makeatother
-
 \let\oldtableofcontents\tableofcontents
-\renewcommand{\tableofcontents}
-{%
-    % Insert internal document link
+% Insert internal document link
+\renewcommand{\tableofcontents}{%
     \hypertarget{summary}%
     \oldtableofcontents%
 }
