@@ -214,46 +214,46 @@
     }{}
     \newcommand{\addGoToSummary}
     {%
-        \let\oldSectionformat\Sectionformat
+        \let\oldAddGoToSectionformat\Sectionformat
         \renewcommand{\Sectionformat}[2]{##1 \protect\goToSummaryText}
         \ifismemoirloaded
             \ifisabntexloaded
-                \let\oldABNTEXchapterupperifneeded\ABNTEXchapterupperifneeded
-                \renewcommand{\ABNTEXchapterupperifneeded}[1]{\oldABNTEXchapterupperifneeded{##1} \protect\goToSummaryText}
+                \let\oldAddGoToABNTEXchapterupperifneeded\ABNTEXchapterupperifneeded
+                \renewcommand{\ABNTEXchapterupperifneeded}[1]{\oldAddGoToABNTEXchapterupperifneeded{##1} \protect\goToSummaryText}
             \else
-                \let\oldprintchaptertitle\printchaptertitle
-                \renewcommand{\printchaptertitle}[1]{\oldprintchaptertitle{##1} \protect\goToSummaryText}
+                \let\oldAddGoToprintchaptertitle\printchaptertitle
+                \renewcommand{\printchaptertitle}[1]{\oldAddGoToprintchaptertitle{##1} \protect\goToSummaryText}
             \fi
         \else
             \@ifundefined{Chapterformat}{\message{Chapterformat patch for addGoToSummary could NOT
                 be applied because there is no Chapterformat command available!^^J}}{%
-                \let\oldChapterformat\Chapterformat
-                \renewcommand{\Chapterformat}[2]{\oldChapterformat{##1} \protect\goToSummaryText}%
+                \let\oldAddGoToChapterformat\Chapterformat
+                \renewcommand{\Chapterformat}[2]{\oldAddGoToChapterformat{##1} \protect\goToSummaryText}%
             }
         \fi
     }
     \newcommand{\removeGoToSummary}
     {%
-        \let\Sectionformat\oldSectionformat
+        \let\Sectionformat\oldAddGoToSectionformat
         \ifismemoirloaded
             \ifisabntexloaded
-                \let\ABNTEXchapterupperifneeded\oldABNTEXchapterupperifneeded
+                \let\ABNTEXchapterupperifneeded\oldAddGoToABNTEXchapterupperifneeded
             \else
-                \let\printchaptertitle\oldprintchaptertitle
+                \let\printchaptertitle\oldAddGoToprintchaptertitle
             \fi
         \else
             \@ifundefined{Chapterformat}{\message{Chapterformat patch for removeGoToSummary could NOT
                 be applied because there is no Chapterformat command available!^^J}}{%
-                \let\Chapterformat\oldChapterformat%
+                \let\Chapterformat\oldAddGoToChapterformat%
             }
         \fi
     }
 \makeatother
-\let\oldtableofcontents\tableofcontents
+\let\oldAddGoTotableofcontents\tableofcontents
 % Insert internal document link
 \renewcommand{\tableofcontents}{%
     \hypertarget{summary}%
-    \oldtableofcontents%
+    \oldAddGoTotableofcontents%
 }
 
 
