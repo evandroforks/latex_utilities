@@ -28,6 +28,28 @@
 \@ifundefined{hline}{       \def\hline{hline} }{}
 \@ifundefined{caption}{     \def\caption{caption} }{}
 \@ifundefined{RaggedRight}{ \def\RaggedRight{RaggedRight} }{}
+\@ifundefined{coordenador}{ \def\coordenador{coordenador} }{}
+\@ifundefined{ano}{         \def\ano{ano} }{}
+\@ifundefined{biblioteca}{  \def\biblioteca{biblioteca} }{}
+\@ifundefined{instituicaosigla}{  \def\instituicaosigla{instituicaosigla} }{}
+\@ifundefined{area}{  \def\area{area} }{}
+\@ifundefined{formacao}{  \def\formacao{formacao} }{}
+\@ifundefined{programa}{  \def\programa{programa} }{}
+\@ifundefined{centro}{  \def\centro{centro} }{}
+\@ifundefined{palavraschaveufsc}{  \def\palavraschaveufsc{palavraschaveufsc} }{}
+\@ifundefined{imprimirprograma}{  \def\imprimirprograma{imprimirprograma} }{}
+\@ifundefined{imprimirformacao}{  \def\imprimirformacao{imprimirformacao} }{}
+\@ifundefined{imprimirtitulo}{  \def\imprimirtitulo{imprimirtitulo} }{}
+\@ifundefined{imprimirsubtitulo}{  \def\imprimirsubtitulo{imprimirsubtitulo} }{}
+\@ifundefined{imprimircoorientador}{  \def\imprimircoorientador{imprimircoorientador} }{}
+\@ifundefined{palavraschaveingles}{  \def\palavraschaveingles{palavraschaveingles} }{}
+\@ifundefined{imprimirautor}{  \def\imprimirautor{imprimirautor} }{}
+\@ifundefined{imprimirorientadorRotulo}{  \def\imprimirorientadorRotulo{imprimirorientadorRotulo} }{}
+\@ifundefined{imprimirdata}{  \def\imprimirdata{imprimirdata} }{}
+\@ifundefined{imprimirtipotrabalho}{  \def\imprimirtipotrabalho{imprimirtipotrabalho} }{}
+\@ifundefined{imprimirinstituicao}{  \def\imprimirinstituicao{imprimirinstituicao} }{}
+\@ifundefined{imprimircentro}{  \def\imprimircentro{imprimircentro} }{}
+\@ifundefined{palavraschaveportugues}{  \def\palavraschaveportugues{palavraschaveportugues} }{}
 
 \@ifundefined{currenttime}{         \def\currenttime{Current Time} }{}
 \@ifundefined{lstlistingname}{      \def\lstlistingname{LST Listing Name} }{}
@@ -41,6 +63,26 @@
 \@ifundefined{texorpdfstring}{      \def\texorpdfstring{texorpdfstring} }{}
 \@ifundefined{ABNTEXfontereduzida}{ \def\ABNTEXfontereduzida{ABNTEXfontereduzida} }{}
 \@ifundefined{citeonline}{          \def\citeonline{citeonline} }{}
+\@ifundefined{imprimircoordenador}{          \def\imprimircoordenador{imprimircoordenador} }{}
+\@ifundefined{imprimircoordenadorRotulo}{          \def\imprimircoordenadorRotulo{imprimircoordenadorRotulo} }{}
+\@ifundefined{imprimirinstituicaosigla}{          \def\imprimirinstituicaosigla{imprimirinstituicaosigla} }{}
+\@ifundefined{imprimirpalavraschave}{          \def\imprimirpalavraschave{imprimirpalavraschave} }{}
+\@ifundefined{autor}{          \def\autor{autor} }{}
+\@ifundefined{titulo}{          \def\titulo{titulo} }{}
+\@ifundefined{orientador}{          \def\orientador{orientador} }{}
+\@ifundefined{local}{          \def\local{local} }{}
+\@ifundefined{instituicao}{          \def\instituicao{instituicao} }{}
+\@ifundefined{tipotrabalho}{          \def\tipotrabalho{tipotrabalho} }{}
+\@ifundefined{data}{          \def\data{data} }{}
+\@ifundefined{preambulo}{          \def\preambulo{preambulo} }{}
+\@ifundefined{PRIVATEbookmarkthis}{          \def\PRIVATEbookmarkthis{PRIVATEbookmarkthis} }{}
+\@ifundefined{pretextual}{          \def\pretextual{pretextual} }{}
+\@ifundefined{imprimircapa}{          \def\imprimircapa{imprimircapa} }{}
+\@ifundefined{imprimirfolhaderosto}{          \def\imprimirfolhaderosto{imprimirfolhaderosto} }{}
+\@ifundefined{textual}{          \def\textual{textual} }{}
+\@ifundefined{phantompart}{          \def\phantompart{phantompart} }{}
+\@ifundefined{postextual}{          \def\postextual{postextual} }{}
+\@ifundefined{ifnotempty}{  \newcommand{\ifnotempty}[3][]{ ifnotempty } }{}
 
 % How to rename an existing command?
 % https://tex.stackexchange.com/questions/193379/how-to-rename-an-existing-command
@@ -84,6 +126,48 @@
     \newenvironment{longtable}[0]
     {longtable environment\par\verbatim\supertiny}
     {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{fichacatalografica}
+{
+    \newenvironment{fichacatalografica}[0]
+    {fichacatalografica environment\par\verbatim\supertiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{folhadeaprovacao}
+{
+    \newenvironment{folhadeaprovacao}[0]
+    {folhadeaprovacao environment\par\verbatim\supertiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{apendicesenv}
+{
+    \newenvironment{apendicesenv}[0]
+    {apendicesenv environment\par\verbatim\supertiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{anexosenv}
+{
+    \newenvironment{anexosenv}[0]
+    {anexosenv environment\par\verbatim\supertiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{citacao}
+{
+    \newenvironment{citacao}[0]
+    {citacao environment\par\verbatim\supertiny}
+    {\normalfont\endverbatim\endgraf replacement for debug mode}
+}{}
+
+\@ifundefined{resumo}
+{
+    \newenvironment{resumo}[0]
+    {resumo environment}
+    {replacement for debug mode}
 }{}
 
 \@ifundefined{sideways}
