@@ -194,13 +194,6 @@
 % https://tex.stackexchange.com/questions/28136/latex-not-hyphenating-properly-text-running-off-page
 \usepackage{hyphenat}
 
-% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
-% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
-%
-% Why ltablex package breaks the changepage package?
-% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
-% \usepackage{ltablex}\keepXColumns
-
 % How to use \scalebox around my environment?
 % https://tex.stackexchange.com/questions/387515/how-to-use-scalebox-around-my-environment
 \usepackage{verbatimbox}
@@ -224,13 +217,71 @@
 \usepackage{xstring}
 \usepackage{xifthen}
 
+% abntex2
+\usepackage{bookmark}
+\usepackage{calc}
+
 % cannot use \caption under minipage
 % https://tex.stackexchange.com/questions/57433/cannot-use-caption-under-minipage
 \usepackage{capt-of}
 
+% Custom list throw LaTeX Error: Command \mycustomfiction already defined?
+% https://tex.stackexchange.com/questions/388489/custom-list-throw-latex-error-command-mycustomfiction-already-defined
+\usepackage{morewrites}
+
+% Package csquotes Warning: Load 'inputenc' before 'csquotes'
+% Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing
+% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
+\usepackage{csquotes}
+
+% Indent the first section paragraphs
+% https://tex.stackexchange.com/questions/39227/no-indent-in-the-first-paragraph-in-a-section
+\usepackage{indentfirst}
+
+% Why the environment ttfamily is hyphenated, but macro ttfamily is not hyphenating?
+% https://tex.stackexchange.com/questions/387678/why-the-environment-ttfamily-is-hyphenated-but-macro-ttfamily-is-not-hyphenatin
+\usepackage{letltxmacro}
+
+% Theorem packages: which to use, which conflict?
+% https://tex.stackexchange.com/questions/5599/theorem-packages-which-to-use-which-conflict
+\usepackage{amsthm}
+
+% Why is the ifthen package obsolete? (It is used by the abntex2 class)
+% https://tex.stackexchange.com/questions/13866/why-is-the-ifthen-package-obsolete
+\usepackage{ifthen}
+
+% How to make section name uppercase in ToC?
+% https://tex.stackexchange.com/questions/156916/how-to-make-section-name-uppercase-in-toc
+\usepackage{textcase}
+
+% The class memoir already provides these functionalities: Caption package and Memoir
+% https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
+% https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
+% \usepackage{subfig}
+% \usepackage{etoolbox}
+%
 % How to create my own caption type with \DeclareCaptionType on memoir class?
 % https://tex.stackexchange.com/questions/391901/how-to-create-my-own-caption-type-with-declarecaptiontype-on-memoir-class
 \usepackage{caption}
+
+% The package `layouts` causes the: Warning: layout scale set to 0.5 on input line
+% https://tex.stackexchange.com/questions/299372/warning-layout-scale-set-to-0-5-on-input-line
+% \usepackage{layouts}
+
+% Always use it as should improve full justification
+% https://tex.stackexchange.com/questions/10377/texttt-overfull-hbox-problem
+% https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
+\usepackage{microtype}
+
+% https://tex.stackexchange.com/questions/482886/how-to-add-babel-captions-to-newfloat-package-environments
+\usepackage{newfloat}
+
+% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
+% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
+%
+% Why ltablex package breaks the changepage package?
+% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
+\usepackage{ltablex}\keepXColumns
 
 % Para incluir links com characteres especiais como # em URLs em `\footnote`
 % https://tex.stackexchange.com/questions/12855/getting-those-signs-in-the-footnote
