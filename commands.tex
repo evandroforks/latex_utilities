@@ -213,6 +213,7 @@
     \@ifclassloaded{abntex2}{%
         \isabntexloadedtrue%
     }{}
+
     \newcommand{\addGoToSummary}
     {%
         \@ifundefined{printparttitle}{\message{printparttitle patch for addGoToSummary could NOT
@@ -225,6 +226,7 @@
             \let\oldAddGoToSectionformat\Sectionformat
             \xapptocmd{\Sectionformat}{~\protect\goToSummaryText}{}{}
         }
+
         \ifismemoirloaded
             \ifisabntexloaded
                 \let\oldAddGoToABNTEXchapterupperifneeded\ABNTEXchapterupperifneeded
@@ -241,10 +243,12 @@
             }
         \fi
     }
+
     \newcommand{\removeGoToSummary}
     {%
         \@ifundefined{oldAddGoToprintparttitle}{}{\let\printparttitle\oldAddGoToprintparttitle}
         \@ifundefined{oldAddGoToSectionformat}{}{\let\Sectionformat\oldAddGoToSectionformat}
+
         \ifismemoirloaded
             \ifisabntexloaded
                 \@ifundefined{oldAddGoToABNTEXchapterupperifneeded}{}{\let\ABNTEXchapterupperifneeded\oldAddGoToABNTEXchapterupperifneeded}
@@ -255,6 +259,7 @@
             \@ifundefined{oldAddGoToChapterformat}{}{\let\Chapterformat\oldAddGoToChapterformat}
         \fi
     }
+
 \makeatother
 \let\oldAddGoTotableofcontents\tableofcontents
 % Insert internal document link
@@ -301,7 +306,7 @@
 
     % https://tex.stackexchange.com/questions/485830/why-latex-does-not-tell-me-which-command-is-undefined
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\lstlistingname}{Código}}}{}}{}
-    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\lstlistlistingname}{Lista de códigos}}}{}}{}
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\lstlistlistingname}{Lista de Códigos}}}{}}{}
 
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{english}{\addto\captionsenglish{\renewcommand{\lstlistingname}{Code}}}{}}{}
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{english}{\addto\captionsenglish{\renewcommand{\lstlistlistingname}{List of Codes}}}{}}{}
