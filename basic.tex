@@ -146,7 +146,7 @@
 
 % https://tex.stackexchange.com/questions/62611/how-to-make-ref-references-include-the-word-figure
 \usepackage{cleveref}
-\let\cref\Cref
+\newcommand*{\typeref}[1]{\hyperref[{#1}]{\Cref*{#1}}} % One single link
 
 \usepackage{amssymb}
 \usepackage{mathrsfs}
