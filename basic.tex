@@ -144,10 +144,6 @@
 \let\equation\gather
 \let\endequation\endgather
 
-% https://tex.stackexchange.com/questions/62611/how-to-make-ref-references-include-the-word-figure
-\usepackage{cleveref}
-\newcommand*{\typeref}[1]{\hyperref[{#1}]{\Cref*{#1}}} % One single link
-
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{pdflscape}
@@ -306,6 +302,9 @@
 % https://tex.stackexchange.com/questions/403651/while-loading-fancyvrb-siunitx-and-bigfoot-i-got-input-stack-size-5000-tex-st
 \xpatchcmd{\FN@allmarks}{266}{256}{}{}
 
+% https://tex.stackexchange.com/questions/62611/how-to-make-ref-references-include-the-word-figure
+\usepackage{cleveref}
+\newcommand*{\typeref}[1]{\hyperref[{#1}]{\Cref*{#1}}} % One single link
 
 
 \makeatother
