@@ -311,6 +311,9 @@
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{english}{\addto\captionsenglish{\renewcommand{\lstlistingname}{Code}}}{}}{}
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{english}{\addto\captionsenglish{\renewcommand{\lstlistlistingname}{List of Codes}}}{}}{}
 
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\crefname{listing}{código}{códigos}}}{}}{}
+    \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\Crefname{listing}{Código}{Códigos}}}{}}{}
+
     \begingroup
     \makeatletter
         \let\newcounter\@gobble\let\setcounter\@gobbletwo
@@ -466,6 +469,7 @@
 \makeatletter
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\quadrosname}{Quadro}}}{}}{}
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\renewcommand{\listofquadrosname}{Lista de Quadros}}}{}}{}
+
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\crefname{quadro}{quadro}{quadros}}}{}}{}
     \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{\Crefname{quadro}{Quadro}{Quadros}}}{}}{}
 
